@@ -1,55 +1,44 @@
+/* General body styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    background-color: #f9f9f9; /* Light background color */
+    color: #333; /* Dark text color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
+/* Header styles */
 header {
     background-color: #2ecc71; /* Mint Green */
-    color: white;
-    padding: 20px;
-    text-align: center;
+    color: white; /* White text */
+    padding: 20px; /* Padding around header */
+    text-align: center; /* Center align text */
 }
 
+/* Navigation styles */
 nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    display: inline; /* Display links inline */
+    margin: 0 15px; /* Spacing between links */
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
+/* Change link color on hover */
+nav a:hover {
+    color: #34495e; /* Darker color on hover */
+}
+
+/* Section padding */
 .intro, .about, .portfolio, .contact {
-    padding: 20px;
-}
+    padding: 20px; /* Padding f
 
-.project {
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    width: 300px;
-    background-color: white;
-    transition: transform 0.2s;
-}
-
-.project:hover {
-    transform: scale(1.05);
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #2ecc71; /* Mint Green */
-    color: white;
-}
 
