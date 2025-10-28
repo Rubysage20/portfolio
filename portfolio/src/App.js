@@ -213,6 +213,80 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+{/* Education Section */}
+<section id="education" className="py-20 px-6">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
+      Education & Certifications
+    </h2>
+    <div className="grid md:grid-cols-2 gap-8">
+      {/* BS in Computer Science */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+        <div className="h-2 bg-gradient-to-r from-rose-400 to-pink-400"></div>
+        <div className="p-8">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-1">Bachelor of Science</h3>
+              <p className="text-lg text-rose-600 font-semibold">Computer Science</p>
+            </div>
+            <span className="text-gray-500 font-medium">2025</span>
+          </div>
+          <p className="text-gray-700 mb-3">Southern New Hampshire University</p>
+          <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-3 border-l-4 border-rose-400">
+            <p className="text-rose-700 font-semibold">🏆 President's List - Every Semester</p>
+          </div>
+        </div>
+      </div>
+
+      {/* AWS Certification */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+        <div className="h-2 bg-gradient-to-r from-orange-400 to-yellow-400"></div>
+        <div className="p-8">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-1">AWS Certified</h3>
+              <p className="text-lg text-orange-600 font-semibold">Cloud Practitioner</p>
+            </div>
+            <span className="text-gray-500 font-medium">2026</span>
+          </div>
+          <p className="text-gray-700 mb-2">Amazon Web Services</p>
+          <p className="text-sm text-gray-600 mb-3">AWS Foundations - Arizona Global University</p>
+          <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-3 border-l-4 border-orange-400">
+            <p className="text-orange-700 font-semibold">📅 Exam Scheduled: January 13, 2026</p>
+          </div>
+        </div>
+      </div>
+
+      {/* AAS in Information Technology */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+        <div className="h-2 bg-gradient-to-r from-purple-400 to-indigo-400"></div>
+        <div className="p-8">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-1">Associate of Applied Science</h3>
+              <p className="text-lg text-purple-600 font-semibold">Information Technology</p>
+            </div>
+          </div>
+          <p className="text-gray-700">Community College of Baltimore County</p>
+        </div>
+      </div>
+
+      {/* Programming Certificate */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+        <div className="h-2 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+        <div className="p-8">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-1">Certificate</h3>
+              <p className="text-lg text-blue-600 font-semibold">Programming</p>
+            </div>
+          </div>
+          <p className="text-gray-700">Community College of Baltimore County</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6">
