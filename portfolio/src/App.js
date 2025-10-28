@@ -14,7 +14,7 @@ export default function Portfolio() {
     {
       title: "Hospital Management System",
       description: "Full-stack healthcare application featuring appointment scheduling, patient management, payroll system, and comprehensive CRUD operations.",
-      tech: ["Angular", "Spring Boot", "MongoDB", "REST APIs"],
+      tech: ["React", "Spring Boot", "MongoDB",  "Maven", "REST APIs"],
       link: "https://rubysage20.github.io/ePortfolio/",
       color: "from-rose-400 to-pink-400"
     },
@@ -29,7 +29,7 @@ export default function Portfolio() {
 
   const skills = [
     { category: "Frontend", items: ["React", "Angular", "JavaScript", "HTML/CSS", "Tailwind"], icon: Code },
-    { category: "Backend", items: ["Node.js", "Spring Boot", "Express", "REST APIs"], icon: Database },
+    { category: "Backend", items: ["Node.js", "Spring Boot", "Express", "REST APIs", "Java"], icon: Database },
     { category: "Cloud & Tools", items: ["Git", "MongoDB", "AWS (Learning)", "Docker (Learning)"], icon: Cloud }
   ];
 
@@ -102,20 +102,41 @@ export default function Portfolio() {
           <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
               I'm a recent Computer Science graduate from Southern New Hampshire University with a passion 
-              for full-stack development. My journey in tech has been driven by curiosity and a love for 
-              solving complex problems through code.
+              for full-stack development. My path to software development began with a degree in Information Technologywhere I quickly 
+                realized my passion lay not in networking infrastructure, but in building software. While IT provided valuable foundational knowledge, I craved deeper engagement with coding and software development. This realization led me to pursue a BS in Computer Science at Southern New Hampshire University, where I earned a place on the President's List every single semester—a testament to my dedication and love for the craft.
             </p>
+            <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Currently, I'm expanding my expertise in cloud engineering, with a focus on AWS and modern 
-              cloud-native architectures. I enjoy working with both frontend and backend technologies, 
-              creating seamless user experiences backed by robust server-side logic.
+            What excites me most about technology is its constant evolution—there's always something new to 
+                learn, always a better way to solve a problem. I'm particularly drawn to cloud engineering because 
+                I want to be part of the revolution happening in that space. From containerization and serverless 
+                architectures to AI/ML integration and edge computing, the cloud is reshaping how we build and 
+                deploy applications. I recently completed AWS Foundations through Arizona Global University and 
+                have my AWS Certified Cloud Practitioner exam scheduled for January 13, 2026, marking the next 
+                step in my journey toward becoming a Senior DevOps Engineer.
             </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
             <p className="text-lg text-gray-700 leading-relaxed">
-              When I'm not coding, I'm exploring new technologies, contributing to open-source projects, 
-              and continuously learning to stay ahead in this ever-evolving field.
+             I'm seeking a full-stack development role where candor is valued—a workplace culture that embraces 
+                honest communication, transparent feedback, and direct collaboration. I believe the best teams are 
+                built on trust and open dialogue, where everyone feels empowered to share ideas, challenge 
+                assumptions, and grow together. My background in customer service and executive administration has 
+                taught me the importance of clear communication and understanding diverse perspectives, skills that 
+                translate seamlessly into collaborative software development.
             </p>
           </div>
-        </div>
+                      <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Beyond the Code</h3>
+               <p className="text-lg text-gray-700 leading-relaxed">
+                While I enjoy gaming, exploring different music genres, and taking nature walks to clear my mind, 
+                coding has genuinely become my primary hobby. I'm constantly thinking about my next project or how 
+                to enhance existing ones—whether it's refactoring for better performance, adding new features, or 
+                experimenting with emerging technologies. This perpetual curiosity and drive for continuous 
+                improvement isn't just part of my work; it's who I am. Every challenge is an opportunity to learn, 
+                and every project is a chance to create something meaningful.
+              </p>
+            </div>
       </section>
 
       {/* Projects Section */}
