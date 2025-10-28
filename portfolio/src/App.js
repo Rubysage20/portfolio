@@ -100,12 +100,16 @@ export default function Portfolio() {
             About Me
           </h2>
           <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+            <div>
+        <h3 className="text-xl font-semibold text-gray-800 mb-3">My Journey</h3>
+        <p className="text-lg text-gray-700 leading-relaxed mb-4">
               I'm a recent Computer Science graduate from Southern New Hampshire University with a passion 
               for full-stack development. My path to software development began with a degree in Information Technologywhere I quickly 
                 realized my passion lay not in networking infrastructure, but in building software. While IT provided valuable foundational knowledge, I craved deeper engagement with coding and software development. This realization led me to pursue a BS in Computer Science at Southern New Hampshire University, where I earned a place on the President's List every single semester—a testament to my dedication and love for the craft.
             </p>
-            <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+                  </div>
+                  <div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">What Drives Me</h3>
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
             What excites me most about technology is its constant evolution—there's always something new to 
                 learn, always a better way to solve a problem. I'm particularly drawn to cloud engineering because 
@@ -116,7 +120,9 @@ export default function Portfolio() {
                 step in my journey toward becoming a Senior DevOps Engineer.
             </p>
                   </div>
-                  <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+                  
+                  <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">What I'm Looking For</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
              I'm seeking a full-stack development role where candor is valued—a workplace culture that embraces 
                 honest communication, transparent feedback, and direct collaboration. I believe the best teams are 
@@ -126,8 +132,8 @@ export default function Portfolio() {
                 translate seamlessly into collaborative software development.
             </p>
           </div>
-                      <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Beyond the Code</h3>
+                      <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Beyond the Code</h3>
                <p className="text-lg text-gray-700 leading-relaxed">
                 While I enjoy gaming, exploring different music genres, and taking nature walks to clear my mind, 
                 coding has genuinely become my primary hobby. I'm constantly thinking about my next project or how 
