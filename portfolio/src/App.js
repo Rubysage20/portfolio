@@ -21,7 +21,7 @@ export default function Portfolio() {
     {
       title: "HomeFlow Dashboard",
       description: "Modern IoT home automation system with real-time data visualization, smart device control, and responsive dashboard design.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "REST APIs"],
+      tech: ["Angular", "Node.js", "Express", "MongoDB", "REST APIs"],
       link: "#",
       color: "from-purple-400 to-indigo-400"
     }
