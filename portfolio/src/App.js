@@ -43,7 +43,7 @@ export default function Portfolio() {
               VD
             </h1>
             <div className="flex gap-6">
-              {['home', 'about', 'projects', 'skills', 'education' 'contact'].map((section) => (
+              {['home', 'about', 'projects', 'skills', 'education', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
