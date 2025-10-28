@@ -4,7 +4,7 @@ A modern, responsive single-page portfolio website built with React showcasing f
 
 ## Live Demo
 
- https://rubysage20.github.io/portfolio
+ [https://rubysage20.github.io/portfolio](https://portfolio-rubysage20s-projects.vercel.app/)
 
 ## Features
 
