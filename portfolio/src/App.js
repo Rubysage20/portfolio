@@ -137,6 +137,7 @@ export default function Portfolio() {
                 and every project is a chance to create something meaningful.
               </p>
             </div>
+                  </div>
       </section>
 
       {/* Projects Section */}
