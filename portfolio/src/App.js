@@ -213,6 +213,7 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
 {/* Education Section */}
 <section id="education" className="py-20 px-6">
   <div className="max-w-6xl mx-auto">
@@ -233,7 +234,7 @@ export default function Portfolio() {
           </div>
           <p className="text-gray-700 mb-3">Southern New Hampshire University</p>
           <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-3 border-l-4 border-rose-400">
-            <p className="text-rose-700 font-semibold">🏆 President's List - Every Semester</p>
+            <p className="text-rose-700 font-semibold">President's List - Every Semester</p>
           </div>
         </div>
       </div>
@@ -252,7 +253,7 @@ export default function Portfolio() {
           <p className="text-gray-700 mb-2">Amazon Web Services</p>
           <p className="text-sm text-gray-600 mb-3">AWS Foundations - Arizona Global University</p>
           <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-3 border-l-4 border-orange-400">
-            <p className="text-orange-700 font-semibold">📅 Exam Scheduled: January 13, 2026</p>
+            <p className="text-orange-700 font-semibold">Exam Scheduled: January 13, 2026</p>
           </div>
         </div>
       </div>
