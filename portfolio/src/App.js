@@ -104,7 +104,7 @@ export default function Portfolio() {
         <h3 className="text-xl font-semibold text-gray-800 mb-3">My Journey</h3>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
               I'm a recent Computer Science graduate from Southern New Hampshire University with a passion 
-              for full-stack development. My path to software development began with a degree in Information Technologywhere I quickly 
+              for full-stack development. My path to software development began with a degree in Information Technology, where I quickly 
                 realized my passion lay not in networking infrastructure, but in building software. While IT provided valuable foundational knowledge, I craved deeper engagement with coding and software development. This realization led me to pursue a BS in Computer Science at Southern New Hampshire University, where I earned a place on the President's List every single semester—a testament to my dedication and love for the craft.
             </p>
                   </div>
