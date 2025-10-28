@@ -267,6 +267,7 @@ export default function Portfolio() {
               <h3 className="text-2xl font-bold text-gray-800 mb-1">Associate of Applied Science</h3>
               <p className="text-lg text-purple-600 font-semibold">Information Technology</p>
             </div>
+          <span className="text-gray-500 font-medium">2024</span>
           </div>
           <p className="text-gray-700">Community College of Baltimore County</p>
         </div>
@@ -281,6 +282,7 @@ export default function Portfolio() {
               <h3 className="text-2xl font-bold text-gray-800 mb-1">Certificate</h3>
               <p className="text-lg text-blue-600 font-semibold">Programming</p>
             </div>
+          <span className="text-gray-500 font-medium">2024</span>
           </div>
           <p className="text-gray-700">Community College of Baltimore County</p>
         </div>
