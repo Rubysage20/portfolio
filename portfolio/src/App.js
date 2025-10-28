@@ -245,7 +245,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 text-center">
         <p className="text-gray-400">
-          © 2024 Valerie Dawson. Built with React.
+          © 2025 Valerie Dawson. Built with React.
         </p>
       </footer>
 
