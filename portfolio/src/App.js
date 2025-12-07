@@ -303,8 +303,7 @@ export default function Portfolio() {
           <div className="flex justify-center gap-6 mb-8">
             <a 
               href="mailto:Valeriedawson513@gmail.com"
-              className="flex items-center gap-2 bg-gradient-to-r from-rose-400 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105"
-            >
+              className="flex items-center gap-2 bg-gradient-to-r from-rose-400 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
               <Mail size={20} />
               Email Me
             </a>
@@ -312,8 +311,7 @@ export default function Portfolio() {
               href="https://github.com/Rubysage20"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105"
-            >
+              className="flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
               <Github size={20} />
               GitHub
             </a>
@@ -321,8 +319,7 @@ export default function Portfolio() {
               href="https://www.linkedin.com/in/valerie-dawson-se"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105"
-            >
+              className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
               <Linkedin size={20} />
               LinkedIn
             </a>
