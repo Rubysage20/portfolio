@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code, Database, Cloud, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code, Database, Cloud, ChevronDown, Award, X } from 'lucide-react';
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
+  const [activeModal, setActiveModal] = useState(null);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -10,28 +11,417 @@ export default function Portfolio() {
     setActiveSection(sectionId);
   };
 
+  const openModal = (projectId) => {
+    setActiveModal(projectId);
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+    document.body.style.overflow = 'unset';
+  };
+
   const projects = [
     {
-      title: "Hospital Management System",
-      description: "Full-stack healthcare application featuring appointment scheduling, patient management, payroll system, and comprehensive CRUD operations.",
-      tech: ["React", "Spring Boot", "MongoDB",  "Maven", "REST APIs"],
-      link: "https://rubysage20.github.io/ePortfolio/",
-      color: "from-rose-400 to-pink-400"
+      id: 'aws-serverless',
+      title: "AWS Serverless Quiz Application",
+      subtitle: "CS 470 Capstone - Cloud Architecture Migration",
+      description: "Full-stack quiz application demonstrating cloud-native migration from containerized architecture to AWS serverless infrastructure. Features 6 Lambda functions, API Gateway integration, and DynamoDB for automatic scaling.",
+      tech: ["AWS Lambda", "API Gateway", "DynamoDB", "Angular", "S3", "IAM"],
+      link: "http://valerie-frontend-projectone.s3-website-us-east-1.amazonaws.com",
+      github: "https://github.com/Rubysage20/CS470-FullStackII",
+      color: "from-orange-400 to-yellow-400",
+      
+      // Detailed modal content
+      problemStatement: "Traditional web applications require managing servers, handling scaling manually, and paying for resources 24/7 regardless of usage. This project demonstrates migrating a full-stack application from containerized deployment to a serverless, cloud-native architecture that automatically scales, reduces operational overhead, and operates on a pay-per-use model.",
+      
+      keyFeatures: [
+        {
+          title: "Multi-Category Quiz System",
+          description: "Organized question library across programming topics (Angular, TypeScript, Angular CLI) with slug-based routing for easy navigation."
+        },
+        {
+          title: "Six Serverless Lambda Functions",
+          description: "TableScan for retrieving all questions/answers, GetSingleRecord for fetching by ID, FindOneQuestion for search, UpsertQuestion and UpsertAnswer for create/update operations, and DeleteRecord for deletions."
+        },
+        {
+          title: "RESTful API with API Gateway",
+          description: "AWS API Gateway providing secure, scalable endpoint management with HTTP method mapping (GET, POST, PUT, DELETE) to Lambda functions."
+        },
+        {
+          title: "NoSQL Cloud Database",
+          description: "DynamoDB tables for Questions and Answers with automatic scaling, partition key optimization, and on-demand capacity mode."
+        },
+        {
+          title: "Cross-Origin Security",
+          description: "CORS configuration enabling secure communication between S3-hosted frontend and API Gateway backend."
+        },
+        {
+          title: "Static Asset Delivery",
+          description: "S3 bucket with static website hosting configuration for Single Page Application routing."
+        }
+      ],
+      
+      technicalImplementation: {
+        frontend: "Angular 7.2 Single Page Application with TypeScript, component-based architecture with lazy loading, Angular Material for UI components, environment-based configuration for dev/production endpoints, and optimized production builds with AOT compilation.",
+        
+        backend: "Six AWS Lambda functions with Node.js runtime handling all CRUD operations: TableScan (Scan operations), GetSingleRecord (GetItem), FindOneQuestion (Query), UpsertQuestion/UpsertAnswer (PutItem), and DeleteRecord (DeleteItem). Event-driven execution with automatic horizontal scaling.",
+        
+        api: "AWS API Gateway with RESTful endpoint design, resource-based routing, request/response transformation, CORS headers configuration, API throttling and key management, and Lambda proxy integration for seamless invocation.",
+        
+        database: "Amazon DynamoDB with two NoSQL tables (Questions and Answers), partition key strategy using 'id' as primary identifier, on-demand capacity mode for automatic scaling, and point-in-time recovery enabled for data protection.",
+        
+        security: "IAM roles and policies for service-to-service authentication, least-privilege access control, S3 bucket policies for static hosting, and CORS policies restricting cross-origin requests."
+      },
+      
+      challengesSolved: [
+        {
+          title: "Serverless Migration Complexity",
+          description: "Decomposed monolithic Node.js backend into six discrete Lambda functions while maintaining functionality. Required rethinking the entire architecture to be stateless and event-driven."
+        },
+        {
+          title: "NoSQL Schema Redesign",
+          description: "Migrated from MongoDB's flexible document model to DynamoDB's key-value structure. Designed partition key strategy for optimal performance and converted all queries from MongoDB syntax to DynamoDB SDK calls."
+        },
+        {
+          title: "CORS Configuration",
+          description: "Debugged cross-origin request issues between S3 static hosting and API Gateway. Configured proper CORS headers including Access-Control-Allow-Origin, Methods, and Headers."
+        },
+        {
+          title: "Production Build Issues",
+          description: "Resolved Node.js OpenSSL compatibility issues with legacy provider flag. Fixed Angular environment configuration to use production API endpoints and ensured proper directory structure for S3 deployment."
+        },
+        {
+          title: "API Integration",
+          description: "Connected Angular HTTP client to API Gateway endpoints with proper error handling, implemented token interceptors, and managed asynchronous data flow between frontend and serverless backend."
+        }
+      ],
+      
+      whatILearned: [
+        "Cloud-Native Architecture: Deep understanding of serverless computing principles, event-driven design, stateless functions, and managed services.",
+        "AWS Service Integration: Hands-on experience connecting Lambda, API Gateway, DynamoDB, S3, and IAM into a cohesive application architecture.",
+        "Infrastructure as Code Mindset: Learning to think in terms of services and configurations rather than servers and deployments.",
+        "Cost Optimization: Understanding pay-per-use pricing models and how serverless reduces costs by ~70% through eliminating idle resources.",
+        "NoSQL Data Modeling: Trade-offs between document databases (MongoDB) and key-value stores (DynamoDB), particularly partition key design strategies.",
+        "Security Best Practices: IAM role creation, least-privilege policies, CORS configuration, and secure service-to-service communication.",
+        "Real Migration Complexity: Experienced the challenges of refactoring existing applications to new architectures while maintaining functionality."
+      ]
     },
     {
-      title: "HomeFlow Dashboard",
-      description: "Modern IoT home automation system with real-time data visualization, smart device control, and responsive dashboard design.",
-      tech: ["Angular", "Node.js", "Express", "MongoDB", "REST APIs"],
+      id: 'homeflow',
+      title: "HomeFlow - Smart Task Management",
+      subtitle: "Full-Stack MERN Application with Gamification",
+      description: "Full-stack household task management platform with intelligent auto-assignment algorithm, comprehensive gamification system (points, streaks, badges), and real-time dashboard built with Angular 18, Node.js, and MongoDB.",
+      tech: ["Angular 18", "Node.js", "Express", "MongoDB", "JWT", "GitHub Actions"],
       link: "https://rubysage20.github.io/HomeFlow/",
-      color: "from-purple-400 to-indigo-400"
+      github: "https://github.com/Rubysage20/HomeFlow",
+      color: "from-purple-400 to-indigo-400",
+      
+      problemStatement: "Managing household tasks fairly among multiple people is challenging, leading to conflicts over perceived unfairness, forgotten responsibilities, and lack of motivation. HomeFlow solves this by combining intelligent task distribution with game-like rewards to make household management engaging and equitable.",
+      
+      keyFeatures: [
+        {
+          title: "Intelligent Auto-Assignment Algorithm",
+          description: "Fair task distribution system that analyzes task complexity (1-10 scale), frequency (daily/weekly/monthly), and each member's recent workload to automatically distribute tasks. Prevents workload imbalance by calculating individual workload scores and assigning new tasks to members with the lowest current load."
+        },
+        {
+          title: "Comprehensive Gamification System",
+          description: "Points earned based on task complexity (Easy: 10pts, Medium: 25pts, Hard: 50pts). Streaks for consecutive days with completed tasks. Badges for milestones (First Task, 10/50/100 Tasks, Consistency Champion, Early Bird, Night Owl). Real-time leaderboard showing household rankings."
+        },
+        {
+          title: "Real-Time Dashboard",
+          description: "Live activity feed showing recent task completions, household contribution statistics, individual progress tracking, streak status and badge showcase, and task completion trends with analytics."
+        },
+        {
+          title: "Task Lifecycle Management",
+          description: "Create tasks with title, description, complexity rating, due dates, priority levels (Low/Medium/High), recurring schedules (Daily/Weekly/Monthly), and assignment options (auto-assign, specific member, or self-assign)."
+        },
+        {
+          title: "Multi-User Household Coordination",
+          description: "Create and join households with unique codes, invite members via shareable links, role-based permissions (Admin/Member), view all household members and statistics, and track household-wide performance metrics."
+        },
+        {
+          title: "CI/CD Pipeline",
+          description: "Automated testing and deployment using GitHub Actions. Frontend deployed to GitHub Pages, backend deployed to Render, with environment-based configuration management and production build optimization."
+        }
+      ],
+      
+      technicalImplementation: {
+        frontend: "Angular 18 with TypeScript, component-based architecture with lazy loading for optimal performance, RxJS for reactive state management and real-time updates, Angular Material for consistent accessible UI components, custom services for API communication, and JWT token-based authentication with route guards.",
+        
+        backend: "Node.js with Express framework providing RESTful API design, MongoDB integration with Mongoose ODM for schema validation, custom middleware for authentication/error handling/request logging, fair distribution algorithm calculating optimal task assignments based on complexity and workload history, and reward calculation engine tracking points, streaks, and achievements using MongoDB aggregation pipelines.",
+        
+        database: "MongoDB with Mongoose ODM, four main collections (Users, Households, Tasks, Achievements), embedded documents for related data, indexes on frequently queried fields (userId, householdId, dueDate), and aggregation pipelines for calculating statistics and leaderboards.",
+        
+        deployment: "GitHub Actions CI/CD pipeline triggering on push to main branch, automated testing and build process, frontend deployed to GitHub Pages with custom domain support, backend deployed to Render with automatic deployments, CORS configuration for secure cross-origin requests between frontend and backend, MongoDB Atlas for cloud database hosting, and environment variable management for different deployment stages."
+      },
+      
+      challengesSolved: [
+        {
+          title: "Fair Distribution Algorithm Design",
+          description: "Developed algorithm balancing multiple factors: task complexity weights (1-10), task frequency (daily tasks weighted higher), member's recent completion history, and current workload scores. Prevents gaming the system by tracking historical patterns and ensuring equitable distribution over time."
+        },
+        {
+          title: "Real-Time State Synchronization",
+          description: "Implemented reactive patterns using RxJS observables to ensure task updates, point changes, and badge unlocks appear instantly across all components without page refresh. Used BehaviorSubjects to maintain current state and automatically update subscribed components."
+        },
+        {
+          title: "CORS Configuration Issues",
+          description: "Debugged cross-origin request problems between GitHub Pages frontend and Render backend. Configured Express CORS middleware to accept specific origins, proper HTTP methods, and credentials for JWT authentication."
+        },
+        {
+          title: "Production Build Optimization",
+          description: "Resolved Angular production build errors including environment configuration, asset path corrections, and base href settings for GitHub Pages deployment. Optimized bundle size using lazy loading and code splitting."
+        },
+        {
+          title: "MongoDB Aggregation for Statistics",
+          description: "Designed complex aggregation pipelines to calculate household statistics, member rankings, task completion rates, and point totals efficiently. Optimized queries to minimize database load and improve dashboard performance."
+        }
+      ],
+      
+      whatILearned: [
+        "Advanced Angular Architecture: Component communication strategies, service-based state management, lazy loading modules, and reactive programming patterns with RxJS observables.",
+        "Algorithm Design: Creating fair distribution logic that balances multiple competing factors while preventing exploitation and maintaining perceived fairness.",
+        "Full-Stack Integration: Connecting Angular frontend with Node.js/Express backend, handling asynchronous operations, managing authentication flows, and maintaining security throughout the stack.",
+        "DevOps Practices: Setting up CI/CD pipelines with GitHub Actions, automating deployments, managing environment configurations, and monitoring production applications.",
+        "MongoDB Expertise: Schema design for NoSQL databases, using aggregation pipelines for analytics, optimizing queries with indexes, and understanding when to embed vs. reference documents.",
+        "User Engagement Through Gamification: Designing reward systems that motivate continued use, balancing point values to feel rewarding, and creating achievements that celebrate progress.",
+        "Production Debugging Skills: Identifying and fixing issues specific to production environments, understanding differences between development and production builds, and using browser developer tools effectively."
+      ]
+    },
+    {
+      id: 'hospital',
+      title: "Hospital Management System",
+      subtitle: "Enterprise Healthcare Application",
+      description: "Enterprise-grade healthcare application with secure patient management, appointment scheduling, and integrated payroll system. Features JWT authentication, role-based access control (RBAC), and comprehensive CRUD operations.",
+      tech: ["React", "Spring Boot", "MongoDB", "JWT", "AWS S3", "Maven"],
+      link: "https://rubysage20.github.io/ePortfolio/",
+      github: "https://github.com/Rubysage20/ePortfolio",
+      color: "from-rose-400 to-pink-400",
+      
+      problemStatement: "Healthcare facilities need centralized systems to manage patient records, coordinate appointments, track staff, and process payroll efficiently while maintaining strict security and HIPAA-like privacy standards. This system provides a comprehensive solution for medical office administration with secure access controls and audit trails.",
+      
+      keyFeatures: [
+        {
+          title: "Patient Management Portal",
+          description: "Complete CRUD operations for patient records including personal details (name, DOB, gender), contact information (email, phone, address), medical history tracking, insurance details, emergency contacts, and visit history with appointment logs."
+        },
+        {
+          title: "Doctor Management System",
+          description: "Physician profiles with specializations (Cardiology, Orthopedics, etc.), availability schedule management, office visit fee configuration, credentials and certifications tracking, patient assignment and load management, and performance metrics."
+        },
+        {
+          title: "Intelligent Appointment Scheduling",
+          description: "Real-time booking calendar with date/time selection, conflict detection preventing double-bookings, doctor availability validation, automated appointment reminders (planned), time slot suggestions for conflicts, and status tracking (Scheduled, Completed, Cancelled)."
+        },
+        {
+          title: "Employee & Payroll Management",
+          description: "Staff records with role assignments (Doctor, Nurse, Admin, Receptionist), department assignments, work hour tracking, hourly rate configuration, automatic payroll calculation based on hours worked, and monthly/annual earning reports."
+        },
+        {
+          title: "Secure Authentication & Authorization",
+          description: "JWT token-based authentication with BCrypt password hashing (12 rounds, one-way encryption), role-based access control (RBAC) with three levels (Patient, Doctor, Administrator), protected routes on frontend and backend, and session management with token expiration."
+        },
+        {
+          title: "Cloud Deployment",
+          description: "Frontend deployed on AWS S3 with static website hosting configuration, demonstrates cloud deployment skills, scalable architecture ready for production use, and environment-specific configurations for development vs. production."
+        }
+      ],
+      
+      technicalImplementation: {
+        frontend: "React 18 with functional components and React Hooks for state management, Material-UI component library for professional interface design, Axios HTTP client with interceptors for token management, protected routes with role-based rendering, Formik for form management with Yup validation, and responsive design supporting mobile, tablet, and desktop devices.",
+        
+        backend: "Spring Boot 3.0 following MVC architecture (Model-View-Controller), Spring Security for authentication and authorization, Spring Data MongoDB for repository pattern and data access, RESTful API design with proper HTTP methods and status codes, Bean Validation annotations for request data validation, custom @ControllerAdvice for centralized exception handling, and JWT token generation/validation with configurable expiration.",
+        
+        database: "MongoDB 6.0 NoSQL document database with five main collections (Patients, Doctors, Appointments, Employees, Users), flexible schema allowing semi-structured healthcare data, embedded documents for related information (appointments within patient records), indexes on frequently queried fields (patientId, doctorId, date), and aggregation pipelines for generating reports and statistics.",
+        
+        security: "Spring Security configuration with JWT authentication, BCrypt password hashing (12 rounds, salted), role-based authorization using @PreAuthorize annotations, CORS configuration allowing specific origins, CSRF protection, prevention of common vulnerabilities (SQL injection handled by MongoDB, XSS prevented by input sanitization), and data validation on both frontend and backend layers."
+      },
+      
+      challengesSolved: [
+        {
+          title: "Role-Based Access Control Implementation",
+          description: "Designed three-tier authorization system where Patients can only access their own records, Doctors can view assigned patients and manage schedules, and Administrators have full system access. Implemented using Spring Security's @PreAuthorize annotations and custom authorization logic checking user roles and ownership."
+        },
+        {
+          title: "Appointment Conflict Detection",
+          description: "Created algorithm that queries database for all appointments on requested date for specific doctor, checks for time slot overlaps using date/time range comparisons, prevents double-booking, and suggests next available slots when conflicts exist. Handles edge cases like back-to-back appointments and buffer times."
+        },
+        {
+          title: "Cross-Stack Data Validation",
+          description: "Implemented dual-layer validation with Formik/Yup on React frontend for immediate user feedback and Bean Validation (@Valid, @NotNull, @Email, @Size) on Spring Boot backend as security layer. Prevents malicious data from reaching database while maintaining good user experience."
+        },
+        {
+          title: "JWT Authentication Flow",
+          description: "Designed complete authentication system: user login sends credentials to backend, Spring Security validates against BCrypt hashed passwords, backend generates signed JWT with user ID and role, frontend stores token in localStorage, token included in Authorization header for all protected requests, and backend validates token on every protected endpoint."
+        },
+        {
+          title: "MongoDB Relationship Management",
+          description: "Modeled complex relationships in NoSQL environment: one-to-many (one doctor has many appointments), many-to-one (many patients have one primary doctor), and embedded vs. referenced data decisions. Used ObjectId references for large collections and embedded documents for tightly coupled data."
+        }
+      ],
+      
+      whatILearned: [
+        "Enterprise Java Development: Spring Boot framework architecture, dependency injection, auto-configuration, and building production-ready applications with industry-standard patterns.",
+        "Spring Security Mastery: Implementing authentication flows, authorization rules, security filters, password encoding, and token-based authentication with JWT.",
+        "Healthcare Domain Knowledge: Understanding requirements for medical record systems, HIPAA-like privacy considerations, audit trail importance, and sensitive data handling.",
+        "Full-Stack Integration: Connecting React SPA with Spring Boot REST API, managing CORS policies, handling authentication tokens, and maintaining security across the stack.",
+        "NoSQL Database Design: Trade-offs between SQL and NoSQL for healthcare data, when to embed vs. reference documents, and designing schemas for query performance.",
+        "Professional API Design: RESTful principles, proper HTTP status codes (200, 201, 400, 401, 403, 404, 500), meaningful error messages, and API documentation best practices.",
+        "Cloud Deployment Fundamentals: AWS S3 configuration for static hosting, bucket policies, CORS settings, and production deployment considerations.",
+        "Testing & Debugging: Using Postman for API testing, debugging Spring Boot applications, reading stack traces, and systematic problem-solving approach."
+      ]
+    }
+  ];
+  const skills = [
+    { 
+      category: "Frontend", 
+      items: ["React", "Angular 18", "JavaScript/TypeScript", "HTML/CSS", "Angular Material", "Material-UI", "RxJS"], 
+      icon: Code 
+    },
+    { 
+      category: "Backend", 
+      items: ["Node.js", "Express", "Spring Boot", "Java", "RESTful APIs", "JWT Auth", "Spring Security"], 
+      icon: Database 
+    },
+    { 
+      category: "Cloud & DevOps", 
+      items: ["AWS (Lambda, API Gateway, DynamoDB, S3, IAM)", "Docker", "GitHub Actions", "CI/CD", "Git"], 
+      icon: Cloud 
+    },
+    {
+      category: "Databases",
+      items: ["MongoDB (Mongoose)", "DynamoDB", "MySQL", "NoSQL Design", "Database Optimization"],
+      icon: Database
     }
   ];
 
-  const skills = [
-    { category: "Frontend", items: ["React", "Angular", "JavaScript", "HTML/CSS", "Tailwind"], icon: Code },
-    { category: "Backend", items: ["Node.js", "Spring Boot", "Express", "REST APIs", "Java"], icon: Database },
-    { category: "Cloud & Tools", items: ["Git", "MongoDB", "AWS (Learning)", "Docker (Learning)"], icon: Cloud }
-  ];
+  const ProjectModal = ({ project }) => {
+    if (!project) return null;
+
+    return (
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto"
+        onClick={closeModal}
+      >
+        <div 
+          className="bg-white rounded-2xl max-w-4xl w-full my-8 shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className={`bg-gradient-to-r ${project.color} p-6 rounded-t-2xl relative`}>
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors"
+            >
+              <X size={24} className="text-gray-700" />
+            </button>
+            <h2 className="text-3xl font-bold text-white mb-2">{project.title}</h2>
+            <p className="text-white text-opacity-90">{project.subtitle}</p>
+          </div>
+
+          {/* Content */}
+          <div className="p-8 max-h-[70vh] overflow-y-auto">
+            {/* Problem Statement */}
+            <section className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Problem Statement</h3>
+              <p className="text-gray-700 leading-relaxed">{project.problemStatement}</p>
+            </section>
+
+            {/* Key Features */}
+            <section className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Key Features</h3>
+              <div className="space-y-4">
+                {project.keyFeatures.map((feature, index) => (
+                  <div key={index} className="bg-gradient-to-r from-rose-50 to-pink-50 p-4 rounded-lg border-l-4 border-rose-400">
+                    <h4 className="font-semibold text-gray-800 mb-2">{feature.title}</h4>
+                    <p className="text-gray-600 text-sm">{feature.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Technical Implementation */}
+            <section className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Technical Implementation</h3>
+              <div className="space-y-4">
+                {Object.entries(project.technicalImplementation).map(([key, value]) => (
+                  <div key={key}>
+                    <h4 className="font-semibold text-gray-800 mb-2 capitalize">{key}</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed bg-gray-50 p-3 rounded-lg">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Technical Challenges Solved */}
+            <section className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Technical Challenges Solved</h3>
+              <div className="space-y-4">
+                {project.challengesSolved.map((challenge, index) => (
+                  <div key={index} className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                    <h4 className="font-semibold text-gray-800 mb-2">{challenge.title}</h4>
+                    <p className="text-gray-600 text-sm">{challenge.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* What I Learned */}
+            <section className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">What I Learned</h3>
+              <ul className="space-y-3">
+                {project.whatILearned.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="text-rose-400 mt-1">•</span>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Tech Stack */}
+            <section className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Technologies Used</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech, index) => (
+                  <span key={index} className="bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 px-4 py-2 rounded-full font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* Links */}
+            <section className="border-t pt-6">
+              <div className="flex gap-4 justify-center">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-rose-400 to-pink-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105 flex items-center gap-2"
+                >
+                  <ExternalLink size={20} />
+                  View Live Demo
+                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105 flex items-center gap-2"
+                  >
+                    <Github size={20} />
+                    View Source Code
+                  </a>
+                )}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -74,10 +464,13 @@ export default function Portfolio() {
           <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 bg-clip-text text-transparent">
             Valerie Dawson
           </h1>
-          <p className="text-2xl text-gray-700 mb-6">Full-Stack Developer & Cloud Engineering Enthusiast</p>
+          <p className="text-2xl text-gray-700 mb-3">Full-Stack Developer & Cloud Engineering Enthusiast</p>
+          <p className="text-lg text-gray-600 mb-2">
+            BS in Computer Science from SNHU • AWS Certified Cloud Practitioner
+          </p>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            BS in Computer Science from SNHU. Passionate about building scalable web applications 
-            and exploring cloud technologies.
+            Passionate about building scalable web applications and cloud-native architectures. 
+            Specializing in React, Angular, Spring Boot, Node.js, and AWS serverless technologies.
           </p>
           <div className="flex gap-4 justify-center">
             <a href="mailto:Valeriedawson513@gmail.com" className="bg-gradient-to-r from-rose-400 to-pink-500 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105">
@@ -92,93 +485,123 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
-{/* About Section */}
-<section id="about" className="py-20 px-6 bg-white">
-  <div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-      About Me
-    </h2>
-    <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg space-y-6">
-      <div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">My Journey</h3>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          My path to software development began with a degree in Information Technology, where I quickly 
-          realized my passion lay not in networking infrastructure, but in building software. While IT 
-          provided valuable foundational knowledge, I craved deeper engagement with coding and software 
-          development. This realization led me to pursue a BS in Computer Science at Southern New Hampshire 
-          University, where I earned a place on the President's List every single semester—a testament to 
-          my dedication and love for the craft.
-        </p>
-      </div>
 
-      <div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">What Drives Me</h3>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          What excites me most about technology is its constant evolution—there's always something new to 
-          learn, always a better way to solve a problem. I'm particularly drawn to cloud engineering because 
-          I want to be part of the revolution happening in that space. From containerization and serverless 
-          architectures to AI/ML integration and edge computing, the cloud is reshaping how we build and 
-          deploy applications. I recently completed AWS Foundations through Arizona Global University and 
-          have my AWS Certified Cloud Practitioner exam scheduled for January 13, 2026, marking the next 
-          step in my journey toward becoming a Senior DevOps Engineer.
-        </p>
-      </div>
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
+            About Me
+          </h2>
+          <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">My Journey</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                My path to software development began with a degree in Information Technology, where I quickly 
+                realized my passion lay not in networking infrastructure, but in building software. While IT 
+                provided valuable foundational knowledge, I craved deeper engagement with coding and software 
+                development. This realization led me to pursue a BS in Computer Science at Southern New Hampshire 
+                University, where I earned a place on the President's List every single semester—a testament to 
+                my dedication and love for the craft.
+              </p>
+            </div>
 
-      <div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">What I'm Looking For</h3>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          I'm seeking a full-stack development role where candor is valued—a workplace culture that embraces 
-          honest communication, transparent feedback, and direct collaboration. I believe the best teams are 
-          built on trust and open dialogue, where everyone feels empowered to share ideas, challenge 
-          assumptions, and grow together. My background in customer service and executive administration has 
-          taught me the importance of clear communication and understanding diverse perspectives, skills that 
-          translate seamlessly into collaborative software development.
-        </p>
-      </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">What Drives Me</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                What excites me most about technology is its constant evolution—there's always something new to 
+                learn, always a better way to solve a problem. I'm particularly drawn to cloud engineering because 
+                I want to be part of the revolution happening in that space. From containerization and serverless 
+                architectures to AI/ML integration and edge computing, the cloud is reshaping how we build and 
+                deploy applications. I've completed AWS Foundations and earned my AWS Certified Cloud Practitioner 
+                certification, with hands-on experience deploying serverless applications using Lambda, API Gateway, 
+                DynamoDB, and S3. My goal is to become a Senior DevOps Engineer, combining my full-stack development 
+                skills with deep cloud infrastructure expertise.
+              </p>
+            </div>
 
-      <div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">Beyond the Code</h3>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          While I enjoy gaming, exploring different music genres, and taking nature walks to clear my mind, 
-          coding has genuinely become my primary hobby. I'm constantly thinking about my next project or how 
-          to enhance existing ones—whether it's refactoring for better performance, adding new features, or 
-          experimenting with emerging technologies. This perpetual curiosity and drive for continuous 
-          improvement isn't just part of my work; it's who I am. Every challenge is an opportunity to learn, 
-          and every project is a chance to create something meaningful.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">What I'm Looking For</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                I'm seeking a full-stack development or cloud engineering role where candor is valued—a workplace 
+                culture that embraces honest communication, transparent feedback, and direct collaboration. I believe 
+                the best teams are built on trust and open dialogue, where everyone feels empowered to share ideas, 
+                challenge assumptions, and grow together. My background in customer service and executive administration 
+                has taught me the importance of clear communication and understanding diverse perspectives, skills that 
+                translate seamlessly into collaborative software development.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Beyond the Code</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                While I enjoy gaming, exploring different music genres, and taking nature walks to clear my mind, 
+                coding has genuinely become my primary hobby. I'm constantly thinking about my next project or how 
+                to enhance existing ones—whether it's refactoring for better performance, adding new features, or 
+                experimenting with emerging technologies. This perpetual curiosity and drive for continuous 
+                improvement isn't just part of my work; it's who I am. Every challenge is an opportunity to learn, 
+                and every project is a chance to create something meaningful.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all hover:scale-105">
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Full-stack applications demonstrating cloud architecture, modern frameworks, and production deployment skills
+          </p>
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <div key={project.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
                 <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-800">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, i) => (
-                      <span key={i} className="bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 px-3 py-1 rounded-full text-sm font-medium">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+                  <p className="text-sm text-gray-500 mb-3">{project.subtitle}</p>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.slice(0, 3).map((tech, i) => (
+                      <span key={i} className="bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 px-2 py-1 rounded-full text-xs font-medium">
                         {tech}
                       </span>
                     ))}
+                    {project.tech.length > 3 && (
+                      <span className="text-xs text-gray-500 px-2 py-1">+{project.tech.length - 3} more</span>
+                    )}
                   </div>
-                  <a 
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-rose-500 font-medium hover:text-rose-600 transition-colors"
+                  
+                  <button
+                    onClick={() => openModal(project.id)}
+                    className="w-full bg-gradient-to-r from-rose-400 to-pink-500 text-white py-2 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105 mb-3"
                   >
-                    View Project <ExternalLink size={18} />
-                  </a>
+                    View Full Details
+                  </button>
+                  
+                  <div className="flex gap-2">
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center border-2 border-rose-400 text-rose-500 py-2 rounded-full text-sm font-medium hover:bg-rose-50 transition-all"
+                    >
+                      Live Demo
+                    </a>
+                    {project.github && (
+                      <a 
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center border-2 border-gray-400 text-gray-600 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-all"
+                      >
+                        Source
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -192,18 +615,18 @@ export default function Portfolio() {
           <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
             Technical Skills
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skills.map((skillGroup, index) => {
               const Icon = skillGroup.icon;
               return (
-                <div key={index} className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all">
-                  <Icon className="text-rose-400 mb-4" size={40} />
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">{skillGroup.category}</h3>
+                <div key={index} className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all">
+                  <Icon className="text-rose-400 mb-4" size={36} />
+                  <h3 className="text-lg font-bold mb-4 text-gray-800">{skillGroup.category}</h3>
                   <ul className="space-y-2">
                     {skillGroup.items.map((skill, i) => (
-                      <li key={i} className="text-gray-700 flex items-center gap-2">
-                        <span className="w-2 h-2 bg-rose-400 rounded-full"></span>
-                        {skill}
+                      <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                        <span>{skill}</span>
                       </li>
                     ))}
                   </ul>
@@ -214,82 +637,85 @@ export default function Portfolio() {
         </div>
       </section>
 
-{/* Education Section */}
-<section id="education" className="py-20 px-6">
-  <div className="max-w-6xl mx-auto">
-    <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-      Education & Certifications
-    </h2>
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* BS in Computer Science */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-        <div className="h-2 bg-gradient-to-r from-rose-400 to-pink-400"></div>
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-1">Bachelor of Science</h3>
-              <p className="text-lg text-rose-600 font-semibold">Computer Science</p>
+      {/* Education Section */}
+      <section id="education" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
+            Education & Certifications
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* BS in Computer Science */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+              <div className="h-2 bg-gradient-to-r from-rose-400 to-pink-400"></div>
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-1">Bachelor of Science</h3>
+                    <p className="text-lg text-rose-600 font-semibold">Computer Science</p>
+                  </div>
+                  <span className="text-gray-500 font-medium">2025</span>
+                </div>
+                <p className="text-gray-700 mb-3">Southern New Hampshire University</p>
+                <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-3 border-l-4 border-rose-400">
+                  <p className="text-rose-700 font-semibold flex items-center gap-2">
+                    <Award size={18} />
+                    President's List - Every Semester
+                  </p>
+                </div>
+              </div>
             </div>
-            <span className="text-gray-500 font-medium">2025</span>
-          </div>
-          <p className="text-gray-700 mb-3">Southern New Hampshire University</p>
-          <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-3 border-l-4 border-rose-400">
-            <p className="text-rose-700 font-semibold">President's List - Every Semester</p>
-          </div>
-        </div>
-      </div>
 
-      {/* AWS Certification */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-        <div className="h-2 bg-gradient-to-r from-orange-400 to-yellow-400"></div>
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-1">AWS Certified</h3>
-              <p className="text-lg text-orange-600 font-semibold">Cloud Practitioner</p>
+            {/* AWS Certification */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+              <div className="h-2 bg-gradient-to-r from-orange-400 to-yellow-400"></div>
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-1">AWS Certified</h3>
+                    <p className="text-lg text-orange-600 font-semibold">Cloud Practitioner</p>
+                  </div>
+                  <span className="text-gray-500 font-medium">2026</span>
+                </div>
+                <p className="text-gray-700 mb-2">Amazon Web Services</p>
+                <p className="text-sm text-gray-600 mb-3">AWS Foundations - Arizona Global University</p>
+                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-3 border-l-4 border-orange-400">
+                  <p className="text-orange-700 font-semibold">Hands-on: Lambda, API Gateway, DynamoDB, S3, IAM</p>
+                </div>
+              </div>
             </div>
-            <span className="text-gray-500 font-medium">2026</span>
-          </div>
-          <p className="text-gray-700 mb-2">Amazon Web Services</p>
-          <p className="text-sm text-gray-600 mb-3">AWS Foundations - Arizona Global University</p>
-          <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-3 border-l-4 border-orange-400">
-            <p className="text-orange-700 font-semibold">Exam Scheduled: January 13, 2026</p>
-          </div>
-        </div>
-      </div>
 
-      {/* AAS in Information Technology */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-        <div className="h-2 bg-gradient-to-r from-purple-400 to-indigo-400"></div>
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-1">Associate of Applied Science</h3>
-              <p className="text-lg text-purple-600 font-semibold">Information Technology</p>
+            {/* AAS in Information Technology */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+              <div className="h-2 bg-gradient-to-r from-purple-400 to-indigo-400"></div>
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-1">Associate of Applied Science</h3>
+                    <p className="text-lg text-purple-600 font-semibold">Information Technology</p>
+                  </div>
+                  <span className="text-gray-500 font-medium">2024</span>
+                </div>
+                <p className="text-gray-700">Community College of Baltimore County</p>
+              </div>
             </div>
-          <span className="text-gray-500 font-medium">2024</span>
-          </div>
-          <p className="text-gray-700">Community College of Baltimore County</p>
-        </div>
-      </div>
 
-      {/* Programming Certificate */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-        <div className="h-2 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-1">Certificate</h3>
-              <p className="text-lg text-blue-600 font-semibold">Programming</p>
+            {/* Programming Certificate */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+              <div className="h-2 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-1">Certificate</h3>
+                    <p className="text-lg text-blue-600 font-semibold">Programming</p>
+                  </div>
+                  <span className="text-gray-500 font-medium">2024</span>
+                </div>
+                <p className="text-gray-700">Community College of Baltimore County</p>
+              </div>
             </div>
-          <span className="text-gray-500 font-medium">2024</span>
           </div>
-          <p className="text-gray-700">Community College of Baltimore County</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6">
@@ -298,9 +724,9 @@ export default function Portfolio() {
             Let's Connect
           </h2>
           <p className="text-xl text-gray-700 mb-8">
-            I'm always open to new opportunities and collaborations!
+            I'm actively seeking full-stack developer and cloud engineering opportunities!
           </p>
-          <div className="flex justify-center gap-6 mb-8">
+          <div className="flex justify-center gap-6 mb-8 flex-wrap">
             <a 
               href="mailto:Valeriedawson513@gmail.com"
               className="flex items-center gap-2 bg-gradient-to-r from-rose-400 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
@@ -334,11 +760,20 @@ export default function Portfolio() {
         </p>
       </footer>
 
+      {/* Modal */}
+      {activeModal && (
+        <ProjectModal project={projects.find(p => p.id === activeModal)} />
+      )}
+
       <style>
         {`
           @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+          }
+          
+          .animate-bounce {
+            animation: bounce 2s infinite;
           }
           
           * {
