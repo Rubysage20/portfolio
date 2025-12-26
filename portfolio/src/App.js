@@ -659,7 +659,7 @@ export default function Portfolio() {
                 <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-3 border-l-4 border-rose-400">
                   <p className="text-rose-700 font-semibold flex items-center gap-2">
                     <Award size={18} />
-                    President's List - Every Semester
+                    Magna Cum Laude
                   </p>
                 </div>
               </div>
