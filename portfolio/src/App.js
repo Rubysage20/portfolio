@@ -13,7 +13,7 @@ export default function Portfolio() {
 
   const openModal = (projectId) => {
     setActiveModal(projectId);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
@@ -30,9 +30,8 @@ export default function Portfolio() {
       tech: ["AWS Lambda", "API Gateway", "DynamoDB", "Angular", "S3", "IAM"],
       link: "http://valerie-frontend-projectone.s3-website-us-east-1.amazonaws.com",
       github: "https://github.com/Rubysage20/CS470-FullStackII",
-      color: "from-orange-400 to-yellow-400",
+      color: "from-cyan-400 to-blue-400",
       
-      // Detailed modal content
       problemStatement: "Traditional web applications require managing servers, handling scaling manually, and paying for resources 24/7 regardless of usage. This project demonstrates migrating a full-stack application from containerized deployment to a serverless, cloud-native architecture that automatically scales, reduces operational overhead, and operates on a pay-per-use model.",
       
       keyFeatures: [
@@ -115,7 +114,7 @@ export default function Portfolio() {
       tech: ["Angular 18", "Node.js", "Express", "MongoDB", "JWT", "GitHub Actions"],
       link: "https://rubysage20.github.io/HomeFlow/",
       github: "https://github.com/Rubysage20/HomeFlow",
-      color: "from-purple-400 to-indigo-400",
+      color: "from-cyan-500 to-cyan-600",
       
       problemStatement: "Managing household tasks fairly among multiple people is challenging, leading to conflicts over perceived unfairness, forgotten responsibilities, and lack of motivation. HomeFlow solves this by combining intelligent task distribution with game-like rewards to make household management engaging and equitable.",
       
@@ -197,7 +196,7 @@ export default function Portfolio() {
       tech: ["React", "Spring Boot", "MongoDB", "JWT", "AWS S3", "Maven"],
       link: "https://rubysage20.github.io/ePortfolio/",
       github: "https://github.com/Rubysage20/ePortfolio",
-      color: "from-rose-400 to-pink-400",
+      color: "from-cyan-400 to-blue-500",
       
       problemStatement: "Healthcare facilities need centralized systems to manage patient records, coordinate appointments, track staff, and process payroll efficiently while maintaining strict security and HIPAA-like privacy standards. This system provides a comprehensive solution for medical office administration with secure access controls and audit trails.",
       
@@ -273,6 +272,7 @@ export default function Portfolio() {
       ]
     }
   ];
+
   const skills = [
     { 
       category: "Frontend", 
@@ -308,7 +308,6 @@ export default function Portfolio() {
           className="bg-white rounded-2xl max-w-4xl w-full my-8 shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header */}
           <div className={`bg-gradient-to-r ${project.color} p-6 rounded-t-2xl relative`}>
             <button
               onClick={closeModal}
@@ -320,20 +319,17 @@ export default function Portfolio() {
             <p className="text-white text-opacity-90">{project.subtitle}</p>
           </div>
 
-          {/* Content */}
           <div className="p-8 max-h-[70vh] overflow-y-auto">
-            {/* Problem Statement */}
             <section className="mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Problem Statement</h3>
               <p className="text-gray-700 leading-relaxed">{project.problemStatement}</p>
             </section>
 
-            {/* Key Features */}
             <section className="mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Key Features</h3>
               <div className="space-y-4">
                 {project.keyFeatures.map((feature, index) => (
-                  <div key={index} className="bg-gradient-to-r from-rose-50 to-pink-50 p-4 rounded-lg border-l-4 border-rose-400">
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg border-l-4 border-cyan-400">
                     <h4 className="font-semibold text-gray-800 mb-2">{feature.title}</h4>
                     <p className="text-gray-600 text-sm">{feature.description}</p>
                   </div>
@@ -341,7 +337,6 @@ export default function Portfolio() {
               </div>
             </section>
 
-            {/* Technical Implementation */}
             <section className="mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Technical Implementation</h3>
               <div className="space-y-4">
@@ -354,12 +349,11 @@ export default function Portfolio() {
               </div>
             </section>
 
-            {/* Technical Challenges Solved */}
             <section className="mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Technical Challenges Solved</h3>
               <div className="space-y-4">
                 {project.challengesSolved.map((challenge, index) => (
-                  <div key={index} className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
                     <h4 className="font-semibold text-gray-800 mb-2">{challenge.title}</h4>
                     <p className="text-gray-600 text-sm">{challenge.description}</p>
                   </div>
@@ -367,39 +361,36 @@ export default function Portfolio() {
               </div>
             </section>
 
-            {/* What I Learned */}
             <section className="mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">What I Learned</h3>
               <ul className="space-y-3">
                 {project.whatILearned.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-rose-400 mt-1">•</span>
+                    <span className="text-cyan-400 mt-1">•</span>
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            {/* Tech Stack */}
             <section className="mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, index) => (
-                  <span key={index} className="bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 px-4 py-2 rounded-full font-medium">
+                  <span key={index} className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium">
                     {tech}
                   </span>
                 ))}
               </div>
             </section>
 
-            {/* Links */}
             <section className="border-t pt-6">
               <div className="flex gap-4 justify-center">
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-rose-400 to-pink-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105 flex items-center gap-2"
+                  className="bg-cyan-500 text-white px-6 py-3 rounded-full font-medium hover:bg-cyan-600 transition-all hover:scale-105 flex items-center gap-2"
                 >
                   <ExternalLink size={20} />
                   View Live Demo
@@ -409,7 +400,7 @@ export default function Portfolio() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105 flex items-center gap-2"
+                    className="bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-700 transition-all hover:scale-105 flex items-center gap-2"
                   >
                     <Github size={20} />
                     View Source Code
@@ -424,21 +415,19 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-lg z-50 border-b-4 border-rose-300">
+      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-              VD
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-900">VD</h1>
             <div className="flex gap-6">
               {['home', 'about', 'projects', 'skills', 'education', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize font-medium transition-all hover:text-rose-500 ${
-                    activeSection === section ? 'text-rose-500' : 'text-gray-700'
+                  className={`capitalize font-medium transition-colors ${
+                    activeSection === section ? 'text-cyan-500' : 'text-gray-700 hover:text-cyan-500'
                   }`}
                 >
                   {section}
@@ -453,7 +442,7 @@ export default function Portfolio() {
       <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6">
         <div className="text-center max-w-4xl">
           <div className="mb-8 inline-block">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-rose-300 to-pink-400 p-1 mx-auto">
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 p-1 mx-auto">
               <img 
                 src="/me.jpg" 
                 alt="Valerie Dawson"
@@ -461,7 +450,7 @@ export default function Portfolio() {
               />
             </div>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900">
             Valerie Dawson
           </h1>
           <p className="text-2xl text-gray-700 mb-3">Full-Stack Developer & Cloud Engineering Enthusiast</p>
@@ -473,26 +462,24 @@ export default function Portfolio() {
             Specializing in React, Angular, Spring Boot, Node.js, and AWS serverless technologies.
           </p>
           <div className="flex gap-4 justify-center">
-            <a href="mailto:Valeriedawson513@gmail.com" className="bg-gradient-to-r from-rose-400 to-pink-500 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105">
+            <a href="mailto:Valeriedawson513@gmail.com" className="bg-cyan-500 text-white px-8 py-3 rounded-full font-medium hover:bg-cyan-600 transition-all hover:scale-105">
               Get In Touch
             </a>
-            <a href="https://github.com/Rubysage20" target="_blank" rel="noopener noreferrer" className="border-2 border-rose-400 text-rose-500 px-8 py-3 rounded-full font-medium hover:bg-rose-50 transition-all">
+            <a href="https://github.com/Rubysage20" target="_blank" rel="noopener noreferrer" className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-full font-medium hover:border-cyan-500 hover:text-cyan-500 transition-all">
               View GitHub
             </a>
           </div>
           <div className="mt-12 animate-bounce">
-            <ChevronDown className="mx-auto text-rose-400" size={32} />
+            <ChevronDown className="mx-auto text-cyan-500" size={32} />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-white">
+      <section id="about" className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-            About Me
-          </h2>
-          <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-8 shadow-lg space-y-6">
+          <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">About Me</h2>
+          <div className="bg-white rounded-2xl p-8 shadow-sm space-y-6 border border-gray-200">
             <div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">My Journey</h3>
               <p className="text-lg text-gray-700 leading-relaxed">
@@ -549,15 +536,13 @@ export default function Portfolio() {
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
+          <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">Featured Projects</h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
             Full-stack applications demonstrating cloud architecture, modern frameworks, and production deployment skills
           </p>
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
-              <div key={project.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+              <div key={project.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200">
                 <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
@@ -566,7 +551,7 @@ export default function Portfolio() {
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="bg-gradient-to-r from-rose-100 to-pink-100 text-rose-700 px-2 py-1 rounded-full text-xs font-medium">
+                      <span key={i} className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
                         {tech}
                       </span>
                     ))}
@@ -577,7 +562,7 @@ export default function Portfolio() {
                   
                   <button
                     onClick={() => openModal(project.id)}
-                    className="w-full bg-gradient-to-r from-rose-400 to-pink-500 text-white py-2 rounded-full font-medium hover:shadow-lg transition-all hover:scale-105 mb-3"
+                    className="w-full bg-cyan-500 text-white py-2 rounded-full font-medium hover:bg-cyan-600 transition-all hover:scale-105 mb-3"
                   >
                     View Full Details
                   </button>
@@ -587,7 +572,7 @@ export default function Portfolio() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center border-2 border-rose-400 text-rose-500 py-2 rounded-full text-sm font-medium hover:bg-rose-50 transition-all"
+                      className="flex-1 text-center border-2 border-gray-300 text-gray-700 py-2 rounded-full text-sm font-medium hover:border-cyan-500 hover:text-cyan-500 transition-all"
                     >
                       Live Demo
                     </a>
@@ -596,7 +581,7 @@ export default function Portfolio() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 text-center border-2 border-gray-400 text-gray-600 py-2 rounded-full text-sm font-medium hover:bg-gray-50 transition-all"
+                        className="flex-1 text-center border-2 border-gray-300 text-gray-700 py-2 rounded-full text-sm font-medium hover:border-gray-500 transition-all"
                       >
                         Source
                       </a>
@@ -610,22 +595,20 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-white">
+      <section id="skills" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-            Technical Skills
-          </h2>
+          <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">Technical Skills</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skills.map((skillGroup, index) => {
               const Icon = skillGroup.icon;
               return (
-                <div key={index} className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all">
-                  <Icon className="text-rose-400 mb-4" size={36} />
+                <div key={index} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all border border-gray-200">
+                  <Icon className="text-cyan-500 mb-4" size={36} />
                   <h3 className="text-lg font-bold mb-4 text-gray-800">{skillGroup.category}</h3>
                   <ul className="space-y-2">
                     {skillGroup.items.map((skill, i) => (
                       <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                        <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full mt-1.5 flex-shrink-0"></span>
                         <span>{skill}</span>
                       </li>
                     ))}
@@ -640,24 +623,21 @@ export default function Portfolio() {
       {/* Education Section */}
       <section id="education" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-            Education & Certifications
-          </h2>
+          <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">Education & Certifications</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* BS in Computer Science */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-              <div className="h-2 bg-gradient-to-r from-rose-400 to-pink-400"></div>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200">
+              <div className="h-2 bg-gradient-to-r from-cyan-400 to-blue-400"></div>
               <div className="p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-1">Bachelor of Science</h3>
-                    <p className="text-lg text-rose-600 font-semibold">Computer Science</p>
+                    <p className="text-lg text-cyan-600 font-semibold">Computer Science</p>
                   </div>
                   <span className="text-gray-500 font-medium">2025</span>
                 </div>
                 <p className="text-gray-700 mb-3">Southern New Hampshire University</p>
-                <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-3 border-l-4 border-rose-400">
-                  <p className="text-rose-700 font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-cyan-400">
+                  <p className="text-cyan-700 font-semibold flex items-center gap-2">
                     <Award size={18} />
                     Magna Cum Laude
                   </p>
@@ -665,33 +645,31 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* AWS Certification */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-              <div className="h-2 bg-gradient-to-r from-orange-400 to-yellow-400"></div>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200">
+              <div className="h-2 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
               <div className="p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-1">AWS Certified</h3>
-                    <p className="text-lg text-orange-600 font-semibold">Cloud Practitioner</p>
+                    <p className="text-lg text-cyan-600 font-semibold">Cloud Practitioner</p>
                   </div>
                   <span className="text-gray-500 font-medium">2026</span>
                 </div>
                 <p className="text-gray-700 mb-2">Amazon Web Services</p>
                 <p className="text-sm text-gray-600 mb-3">AWS Foundations - Arizona Global University</p>
-                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-3 border-l-4 border-orange-400">
-                  <p className="text-orange-700 font-semibold">Hands-on: Lambda, API Gateway, DynamoDB, S3, IAM</p>
+                <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-cyan-400">
+                  <p className="text-cyan-700 font-semibold">Hands-on: Lambda, API Gateway, DynamoDB, S3, IAM</p>
                 </div>
               </div>
             </div>
 
-            {/* AAS in Information Technology */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-              <div className="h-2 bg-gradient-to-r from-purple-400 to-indigo-400"></div>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200">
+              <div className="h-2 bg-gradient-to-r from-cyan-400 to-cyan-600"></div>
               <div className="p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-1">Associate of Applied Science</h3>
-                    <p className="text-lg text-purple-600 font-semibold">Information Technology</p>
+                    <p className="text-lg text-cyan-600 font-semibold">Information Technology</p>
                   </div>
                   <span className="text-gray-500 font-medium">2024</span>
                 </div>
@@ -699,14 +677,13 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Programming Certificate */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-              <div className="h-2 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200">
+              <div className="h-2 bg-gradient-to-r from-cyan-500 to-cyan-700"></div>
               <div className="p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-1">Certificate</h3>
-                    <p className="text-lg text-blue-600 font-semibold">Programming</p>
+                    <p className="text-lg text-cyan-600 font-semibold">Programming</p>
                   </div>
                   <span className="text-gray-500 font-medium">2024</span>
                 </div>
@@ -718,18 +695,16 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-            Let's Connect
-          </h2>
+          <h2 className="text-4xl font-bold mb-8 text-gray-900">Let's Connect</h2>
           <p className="text-xl text-gray-700 mb-8">
             I'm actively seeking full-stack developer and cloud engineering opportunities!
           </p>
           <div className="flex justify-center gap-6 mb-8 flex-wrap">
             <a 
               href="mailto:Valeriedawson513@gmail.com"
-              className="flex items-center gap-2 bg-gradient-to-r from-rose-400 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
+              className="flex items-center gap-2 bg-cyan-500 text-white px-6 py-3 rounded-full hover:bg-cyan-600 transition-all hover:scale-105">
               <Mail size={20} />
               Email Me
             </a>
@@ -737,7 +712,7 @@ export default function Portfolio() {
               href="https://github.com/Rubysage20"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
+              className="flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition-all hover:scale-105">
               <Github size={20} />
               GitHub
             </a>
@@ -745,7 +720,7 @@ export default function Portfolio() {
               href="https://www.linkedin.com/in/valerie-dawson-se"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all hover:scale-105">
+              className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all hover:scale-105">
               <Linkedin size={20} />
               LinkedIn
             </a>
@@ -755,9 +730,7 @@ export default function Portfolio() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 text-center">
-        <p className="text-gray-400">
-          © 2025 Valerie Dawson. Built with React.
-        </p>
+        <p className="text-gray-400">© 2025 Valerie Dawson. Built with React.</p>
       </footer>
 
       {/* Modal */}
