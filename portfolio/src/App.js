@@ -30,7 +30,7 @@ export default function Portfolio() {
       tech: ["React 18", "Node.js", "Express", "MongoDB", "Alpha Vantage API", "Railway", "Vercel", "Custom CSS"],
       link: "https://nexustrading.vercel.app",
       github: "https://github.com/Rubysage20/stock-analysis-tool",
-      color: "from-yellow-400 to-emerald-400",
+      color: "from-cyan-400 to-blue-400",
       
       problemStatement: "Individual investors lack access to professional-grade trading tools and AI-powered insights available to institutional traders. Most retail trading platforms have generic blue interfaces and limited technical analysis. Nexus Trading Platform democratizes access to advanced stock analysis by providing real-time data, intelligent recommendations, and a distinctive premium UI that stands apart from conventional financial applications.",
       
@@ -548,7 +548,7 @@ export default function Portfolio() {
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900">
             Valerie Dawson
           </h1>
-          <p className="text-2xl text-gray-700 mb-3">Full-Stack Developer & Cloud Engineering Enthusiast</p>
+          <p className="text-2xl text-gray-700 mb-3">Full-Stack Developer & Cloud Engineer</p>
           <p className="text-lg text-gray-600 mb-2">
             BS in Computer Science from SNHU • AWS Certified Cloud Practitioner
           </p>
