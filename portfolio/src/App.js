@@ -23,6 +23,101 @@ export default function Portfolio() {
 
   const projects = [
     {
+      id: 'nexus-trading',
+      title: "Nexus Trading Platform",
+      subtitle: "AI-Powered Stock Analysis with Premium Dark UI",
+      description: "Full-stack stock analysis platform featuring real-time market data, AI-powered buy/sell recommendations, and a unique premium dark luxury UI with custom cursor, 3D tilt cards, heat maps, and Bloomberg Terminal-inspired design. Built with React, Node.js, MongoDB, and Alpha Vantage API.",
+      tech: ["React 18", "Node.js", "Express", "MongoDB", "Alpha Vantage API", "Railway", "Vercel", "Custom CSS"],
+      link: "https://nexustrading.vercel.app",
+      github: "https://github.com/Rubysage20/stock-analysis-tool",
+      color: "from-yellow-400 to-emerald-400",
+      
+      problemStatement: "Individual investors lack access to professional-grade trading tools and AI-powered insights available to institutional traders. Most retail trading platforms have generic blue interfaces and limited technical analysis. Nexus Trading Platform democratizes access to advanced stock analysis by providing real-time data, intelligent recommendations, and a distinctive premium UI that stands apart from conventional financial applications.",
+      
+      keyFeatures: [
+        {
+          title: "AI-Powered Smart Recommendations",
+          description: "Multi-factor recommendation engine analyzing RSI (Relative Strength Index), MACD (Moving Average Convergence Divergence), and trend analysis to generate BUY/SELL/HOLD signals. Algorithm calculates confidence scores by evaluating technical indicators: RSI < 30 (oversold, +2 points), RSI > 70 (overbought, -2 points), MACD crossovers (+2/-2 points), and price momentum (+1/-1 points). Final recommendations range from STRONG BUY (≥4 points) to STRONG SELL (≤-4 points) with detailed bullish/bearish signal explanations."
+        },
+        {
+          title: "Real-Time Market Data Integration",
+          description: "Alpha Vantage API integration providing live stock quotes (price, volume, daily change), 30-day historical charts with area gradients, technical indicators (RSI, MACD, SMA 50/200), and market statistics. Implements sequential loading strategy with 13-second delays between API calls to manage rate limits (5 calls/minute, 500/day) while maintaining responsive user experience through progressive data display."
+        },
+        {
+          title: "Premium Dark Luxury UI",
+          description: "Unique Bloomberg Terminal-inspired design featuring custom crosshair cursor, 3D tilt card effects with holographic shimmer, animated particle background (30 floating particles), confetti celebrations for buy signals, and distinctive Black/Gold/Emerald color palette. Over 800 lines of custom CSS including 3D perspective transforms, keyframe animations, and advanced gradient techniques - completely different from typical blue gradient portfolios."
+        },
+        {
+          title: "Interactive Market Heat Map",
+          description: "Visual market overview displaying 8+ stocks in color-coded grid. Dynamic cell colors indicate performance: bright green (>3% gain), light green (0-3% gain), light red (0-3% loss), bright red (>3% loss). Click any cell for instant detailed analysis. Updates in real-time as market data refreshes, providing at-a-glance portfolio monitoring."
+        },
+        {
+          title: "Live Scrolling Ticker",
+          description: "Bloomberg-style infinite scrolling ticker showing real-time prices, percentage changes, and mini sparkline charts for each stock. Smooth CSS animations create professional trading floor atmosphere. Duplicated stock array ensures seamless infinite scroll with no gaps or stuttering."
+        },
+        {
+          title: "Split-Screen Stock Comparison",
+          description: "Side-by-side analysis tool comparing two stocks simultaneously. Left panel (green gradient) displays primary stock, right panel (gold gradient) shows comparison stock. Both panels include real-time quotes, volume data, 30-day charts, and individual metrics. Enables direct performance comparison for investment decisions."
+        },
+        {
+          title: "Demo & Live Modes",
+          description: "Dual deployment strategy: Demo version (deployed to Vercel) uses realistic test data for unlimited portfolio showcase access with instant loading and zero API limits. Live version (App-LIVE.js) connects to Railway backend with real Alpha Vantage integration, demonstrating production API handling, rate limiting, and error management. Both versions maintain identical UI/UX."
+        }
+      ],
+      
+      technicalImplementation: {
+        frontend: "React 18 with functional components and hooks (useState, useEffect, useCallback, useRef) for state management. Recharts library for responsive area charts with custom gradients. Lucide-react for consistent iconography. Custom CSS featuring 3D perspective transforms (perspective(1000px), rotateX/rotateY), keyframe animations for particles/ticker/confetti, custom cursor with ::before pseudo-element, and advanced gradient techniques. Axios HTTP client with interceptors for error handling. Progressive data loading showing quote immediately, then chart after 13s delay, then AI recommendation after another 13s.",
+        
+        backend: "Node.js with Express framework providing RESTful API. MongoDB Atlas integration via Mongoose ODM for watchlist and portfolio persistence. Alpha Vantage service layer handling five API endpoints: GLOBAL_QUOTE (real-time quotes), TIME_SERIES_DAILY (30-day history), RSI (Relative Strength Index), MACD (convergence/divergence), and SMA (Simple Moving Average). Custom recommendation engine aggregating technical indicators into actionable signals. Rate limit management with sequential API calls spaced 13 seconds apart to respect 5 calls/minute constraint.",
+        
+        api: "Three main routes: /api/stocks/quote/:symbol (current price/volume/change), /api/stocks/chart/:symbol (30-day historical data), /api/stocks/recommendation/:symbol (AI analysis with RSI/MACD/SMA). Error handling for invalid symbols, rate limit exceeded responses, and API downtime. CORS configuration allowing cross-origin requests from Vercel frontend to Railway backend.",
+        
+        database: "MongoDB Atlas cloud database with two collections: Watchlists (user's tracked stocks with target prices and notes) and Portfolios (held positions with quantity, purchase price, current value). Mongoose schemas with validation rules. Indexes on userId and symbol fields for query optimization.",
+        
+        deployment: "Frontend deployed to Vercel with automatic GitHub deployments, environment-based API URL configuration, and production build optimization. Backend deployed to Railway with environment variables (PORT, MONGODB_URI, ALPHA_VANTAGE_API_KEY), containerized Node.js runtime, and automatic scaling. MongoDB hosted on Atlas free tier (M0 cluster). CI/CD pipeline triggering on Git push to main branch."
+      },
+      
+      challengesSolved: [
+        {
+          title: "Alpha Vantage Rate Limit Management",
+          description: "Free tier restricts to 5 API calls per minute and 500 per day. Implemented sophisticated sequential loading: load quote immediately (1 call), wait 13 seconds, load chart (1 call), wait 13 seconds, load recommendation which makes 3 calls internally (RSI, MACD, SMA). Added cancellation logic using clearTimeout to stop pending background loads when user switches stocks, preventing wasted API calls. Displays progressive loading indicators ('Loading chart...', 'Analyzing with AI...') to maintain user engagement during delays."
+        },
+        {
+          title: "MongoDB Connection String Security Breach",
+          description: "Accidentally committed .env file with MongoDB credentials to GitHub, exposing database password publicly. GitGuardian detected and alerted immediately. Resolved by: (1) changing MongoDB password in Atlas, (2) removing .env from Git history using git filter-branch, (3) properly configuring .gitignore to exclude .env files, (4) updating environment variables in Railway deployment, and (5) verifying credentials removed from GitHub. Learned critical lesson about secrets management and .gitignore setup before initial commit."
+        },
+        {
+          title: "Custom Cursor Z-Index Conflicts",
+          description: "Custom crosshair cursor disappeared behind modal overlays and navigation bars. Fixed by setting cursor container to position: fixed with z-index: 9999, ensuring it renders above all other elements. Used pointer-events: none to prevent cursor element from blocking clicks on underlying UI components."
+        },
+        {
+          title: "3D Tilt Card Performance",
+          description: "Initial implementation caused layout reflow on every mousemove event, creating janky animations. Optimized by using transform: perspective() and transform: rotateX/rotateY which trigger GPU acceleration instead of CPU-based layout recalculation. Debounced mousemove events and used requestAnimationFrame for smooth 60fps animations even with multiple cards on screen."
+        },
+        {
+          title: "Vercel Build Configuration",
+          description: "Initial deployment failed with 'react-scripts: command not found' because Vercel tried building from project root instead of frontend folder. Fixed by setting Root Directory to 'frontend' in Vercel dashboard settings. Alternative solution using vercel.json with custom buildCommand and outputDirectory for more complex monorepo setups."
+        },
+        {
+          title: "CORS Policy Errors",
+          description: "Frontend on Vercel (https://nexustrading.vercel.app) couldn't communicate with backend on Railway due to cross-origin restrictions. Configured Express CORS middleware to allow specific origin, proper HTTP methods (GET, POST, PUT, DELETE), and credentials for JWT authentication. Set Access-Control-Allow-Origin, Methods, and Headers appropriately."
+        }
+      ],
+      
+      whatILearned: [
+        "Advanced CSS Techniques: Mastered 3D transforms with perspective, creating tilt effects using rotateX/rotateY based on mouse position, GPU-accelerated animations, custom cursor implementation, particle systems using absolute positioning, and gradient techniques including radial/linear gradients with multiple color stops.",
+        "Rate Limit Strategies: Implemented sequential API loading with setTimeout delays, request cancellation using clearTimeout to prevent wasted calls, progressive UI updates to maintain engagement during loading, and graceful degradation when limits exceeded.",
+        "Secrets Management Best Practices: Never commit .env files to version control, always configure .gitignore before initial commit, use environment variables for all sensitive data, rotate credentials immediately if exposed, and use git filter-branch to remove secrets from Git history.",
+        "Full-Stack Production Deployment: Separate frontend (Vercel) and backend (Railway) deployments, environment-specific configurations, CORS setup for cross-origin communication, MongoDB Atlas cloud database management, and CI/CD pipelines with automatic deployments on Git push.",
+        "External API Integration: Handling rate limits gracefully, error handling for API downtime, parsing complex JSON responses, sequential vs. parallel API calls trade-offs, and managing asynchronous data flow with React hooks.",
+        "NoSQL Schema Design for Finance: Modeling stock watchlists and portfolios in MongoDB, when to embed vs. reference documents, indexing strategies for query performance, and aggregation pipelines for calculating statistics.",
+        "UI/UX for Financial Applications: Bloomberg Terminal design patterns, data-dense layouts without overwhelming users, color psychology in trading (green=profit, red=loss), progressive disclosure of information, and maintaining professional aesthetic while being visually distinctive.",
+        "React State Management: Using useState for component state, useEffect for side effects (API calls, timers), useCallback for memoized functions, useRef for DOM access and storing mutable values, and lifting state up to parent components for data sharing.",
+        "Production Debugging: Reading error logs from deployment platforms (Vercel, Railway), debugging CORS issues with browser DevTools, identifying rate limit vs. authentication vs. network errors, and systematic troubleshooting approach.",
+        "Git Workflow: Feature branches, meaningful commit messages, handling merge conflicts, undoing commits with git reset, removing files from history with git filter-branch, and maintaining clean Git history."
+      ]
+    },
+    {
       id: 'aws-serverless',
       title: "AWS Serverless Quiz Application",
       subtitle: "CS 470 Capstone - Cloud Architecture Migration",
@@ -541,7 +636,7 @@ export default function Portfolio() {
             Full-stack applications demonstrating cloud architecture, modern frameworks, and production deployment skills
           </p>
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+            {projects.slice(0, 4).map((project) => (
               <div key={project.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200">
                 <div className={`h-2 bg-gradient-to-r ${project.color}`}></div>
                 <div className="p-6">
