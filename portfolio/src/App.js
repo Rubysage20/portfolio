@@ -123,7 +123,6 @@ export default function Portfolio() {
       subtitle: "CS 470 Capstone - Cloud Architecture Migration",
       description: "Full-stack quiz application demonstrating cloud-native migration from containerized architecture to AWS serverless infrastructure. Features 6 Lambda functions, API Gateway integration, and DynamoDB for automatic scaling.",
       tech: ["AWS Lambda", "API Gateway", "DynamoDB", "Angular", "S3", "IAM"],
-      link: "http://valerie-frontend-projectone.s3-website-us-east-1.amazonaws.com",
       github: "https://github.com/Rubysage20/CS470-FullStackII",
       color: "from-cyan-400 to-blue-400",
       
@@ -289,7 +288,7 @@ export default function Portfolio() {
       subtitle: "Enterprise Healthcare Application",
       description: "Enterprise-grade healthcare application with secure patient management, appointment scheduling, and integrated payroll system. Features JWT authentication, role-based access control (RBAC), and comprehensive CRUD operations.",
       tech: ["React", "Spring Boot", "MongoDB", "JWT", "AWS S3", "Maven"],
-      link: "https://rubysage20.github.io/ePortfolio/",
+      link: "https://hospital-frontend-orcin.vercel.app/",
       github: "https://github.com/Rubysage20/ePortfolio",
       color: "from-cyan-400 to-blue-500",
       
