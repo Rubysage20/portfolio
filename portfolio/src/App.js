@@ -289,7 +289,7 @@ export default function Portfolio() {
       description: "Enterprise-grade healthcare application with secure patient management, appointment scheduling, and integrated payroll system. Features JWT authentication, role-based access control (RBAC), and comprehensive CRUD operations.",
       tech: ["React", "Spring Boot", "MongoDB", "JWT", "AWS S3", "Maven"],
       link: "https://hospital-frontend-orcin.vercel.app/",
-      github: "https://github.com/Rubysage20/ePortfolio",
+      github: "https://github.com/Rubysage20/hospital-backend",
       color: "from-cyan-400 to-blue-500",
       
       problemStatement: "Healthcare facilities need centralized systems to manage patient records, coordinate appointments, track staff, and process payroll efficiently while maintaining strict security and HIPAA-like privacy standards. This system provides a comprehensive solution for medical office administration with secure access controls and audit trails.",
