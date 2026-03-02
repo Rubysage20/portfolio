@@ -396,7 +396,7 @@ export default function PortfolioChat() {
           cursor: pointer;
           transition: all 0.2s;
           text-align: left;
-          white-space: nowrap;
+          white-space: normal;
           overflow: hidden;
           text-overflow: ellipsis;
         }
