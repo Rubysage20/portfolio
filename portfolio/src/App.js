@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code, Database, Cloud, ChevronDown, Award, X } from 'lucide-react';
+import PortfolioChat from './components/PortfolioChat';
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
@@ -832,6 +833,8 @@ export default function Portfolio() {
         <ProjectModal project={projects.find(p => p.id === activeModal)} />
       )}
 
+      <PortfolioChat />
+      
       <style>
         {`
           @keyframes bounce {
