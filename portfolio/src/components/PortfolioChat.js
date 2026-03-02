@@ -397,8 +397,6 @@ export default function PortfolioChat() {
           transition: all 0.2s;
           text-align: left;
           white-space: normal;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
 
         .pchat-suggestion:hover {
