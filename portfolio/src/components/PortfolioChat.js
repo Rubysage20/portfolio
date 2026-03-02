@@ -85,7 +85,7 @@ export default function PortfolioChat() {
       const data = await res.json();
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.message || "Sorry, something went wrong." },
+        { role: "assistant", content: data.message || "Sorry, something went wrong. Valerie is in the process of building her portfolio chat system." },
       ]);
     } catch {
       setMessages((prev) => [

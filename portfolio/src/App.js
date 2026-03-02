@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code, Database, Cloud, ChevronDown, Award, X } from 'lucide-react';
 import PortfolioChat from './components/PortfolioChat';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
@@ -832,9 +833,9 @@ export default function Portfolio() {
       {activeModal && (
         <ProjectModal project={projects.find(p => p.id === activeModal)} />
       )}
-
+      <SpeedInsights />
       <PortfolioChat />
-      
+
       <style>
         {`
           @keyframes bounce {
